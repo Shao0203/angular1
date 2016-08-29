@@ -12,6 +12,19 @@
 	<div class="container">
 		<h1 class="page-header">AngularJS</h1>
 
+		<form name="userForm">
+			<div ng-if="userForm.userEmail.$touched || userForm.$submitted">
+				<p class="alert alert-danger" 
+				 ng-if="userForm.userEmail.$error.required">Email shouldn't be empty</p>	
+			</div>
+			
+			<input type="email" name="userEmail" ng-model="user.email" required>
+		</form>
+			
+		<pre>{{ userForm | json }}</pre>
+
+<hr>
+
 		<div ng-controller="UserController">
 			<input type="text" ng-model='user.name'>
 			<input type="text" ng-model='user.age'>
@@ -40,6 +53,7 @@
 		</div>
 
 		<hr>
+
 
 
 
