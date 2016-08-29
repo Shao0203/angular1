@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular</title>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="js/app.js"></script>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<h1 class="page-header">AngularJS</h1>
+
+		<div ng-controller="UserController">
+			<input type="text" ng-model='user.name'>
+			<input type="text" ng-model='user.age'>
+
+			<p>{{user.name + ' | ' + user.age}}</p>
+			<button class="btn" ng-click="user.run()">subscribe</button>
+		</div>
+
+		<hr>
+
+		<div ng-controller="ShowController">
+			Total Movies: <input type="number" ng-model='limit'>
+			Title Filter: <input type="search" ng-model='query'>
+			<li ng-repeat="show in shows 
+			| limitTo:limit 
+			| filter:{title:query} 
+			| filter: {rate: 6}:comparator" 
+			ng-class="{title:show.book}">
+				<h3><input type="checkbox" ng-model="show.book"> {{ show.title }} 
+				<span class="badge">{{ show.rate }}</span>
+				<span class="glyphicon glyphicon-unchecked" ng-hide="show.book"></span>
+				<span class="glyphicon glyphicon-check" ng-show="show.book"></span></h3>
+				<span>{{'Update: ' + (show.updated * 1000 | date:'dd-MM-yyyy HH:mm:ss') }}</span> 
+				<p>{{'Description: ' + (show.des | limitTo:10) + '...' }}</p>	
+			</li>
+		</div>
+
+		<hr>
+
+
+
+	</div>
+</body>
+</html>
