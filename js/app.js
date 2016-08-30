@@ -25,5 +25,156 @@ myApp.controller('ShowController',function($scope) {
 	$scope.comparator = function(actual, expected) {
 		return actual > expected;
 	};
+});
+
+// service start
+
+myApp.factory('User', function() {
+	var userA = {
+		id: 99,
+		name: 'shao',
+		email: 'nzsyl0203@gmail.com'
+	};
+
+	var _getUser = function() {
+		return userA;
+	};
+	var _setUser = function() {
+		userA.id = 88;
+		userA.name = 'bright';
+		userA.email = 'shao@yahoo.com';
+	};
+	var _setBack = function() {
+		userA.id = 99;
+		userA.name = 'shao';
+		userA.email = 'nzsyl0203@gmail.com';	
+	};
+	return {
+		getUser: _getUser,
+		setUser: _setUser,
+		setBack: _setBack
+	};
+
+})
+
+myApp.controller('GetUserController', function($scope, User) {
+	$scope.human = User.getUser();
+});
+
+myApp.controller('SetUserController', function($scope, User) {
+	$scope.update = function() {
+		User.setUser();
+	}
+	$scope.setBack = function() {
+		User.setBack();
+	}
+});
+
+// service end
+
+//$log
+
+myApp.controller('LogController', function($scope, $log) {
+	$log.log('log...');
+	$log.info('info...');
+	$log.warn('warning...');
+	$log.error('error...');
+	$log.debug('debug...');
+});
+
+myApp.config(function($logProvider) {
+	$logProvider.debugEnabled(false);
+})
+
+//timeOut
+
+myApp.controller('TimeController', function($scope, $log, $timeout) {
+	$scope.gameOn = function() {
+		$log.log('loggg.......');
+		$scope.timer = $timeout($scope.gameOver, 3000);
+	};
+	$scope.gameOver = function() {
+		$timeout.cancel($scope.timer);
+		$log.info('infooo......');
+	};
 
 });
+
+//$q - defer & promise
+
+myApp.controller('DeferController', function($scope, $log, GithubService) {
+	GithubService.login();
+});
+
+myApp.factory('GithubService', function($log, $q) {
+	var _login = function() {
+		var defer = $q.defer();
+		var data = {status: 'ok', userName: 'Github Shao'};
+
+		if (data.status ==='ok') {
+			defer.resolve(data);
+		} else {
+			defer.reject('Error: no user info...');
+		}
+
+		defer.promise.
+			then(
+				function(resolveData) {
+					$log.log('Name: ' +resolveData.userName);
+				},
+				function(rejectInfo) {
+					$log.warn(rejectInfo);
+				}
+				);
+
+		$log.log(defer);
+	};
+	return {
+		login: _login
+	};
+});
+
+//$http - angular ajax
+
+myApp.controller('MovieController', function($scope, $http, $log) {
+
+	$scope.getShows = function() {
+		$http.get('data.json')
+			.then(
+				function(data) {
+					$scope.shows = data.data;
+				},
+				function(error) {
+					$log.warn(error.data);
+				}
+			);
+	};
+
+});
+
+//Controller as
+
+myApp.controller('SelfController', function() {
+	this.name = 'shao';
+});
+
+
+//safe dependency injection
+
+myApp.controller('Safe', ['$scope','$log', function($scope, $log){
+	$scope.name = 'shaoyingliang';
+	$log.log(33333333333333);
+}]);
+
+
+myApp.controller('name', ['', function(){
+	
+}])
+
+
+
+
+
+
+
+

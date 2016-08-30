@@ -9,54 +9,85 @@
 	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-	<div class="container">
-		<h1 class="page-header">AngularJS</h1>
+<div class="container">
+	<h1 class="page-header">AngularJS</h1>
 
-		<form name="userForm">
-			<div ng-if="userForm.userEmail.$touched || userForm.$submitted">
-				<p class="alert alert-danger" 
-				 ng-if="userForm.userEmail.$error.required">Email shouldn't be empty</p>	
-			</div>
-			
-			<input type="email" name="userEmail" ng-model="user.email" required>
-		</form>
-			
-		<pre>{{ userForm | json }}</pre>
+	<div ng-controller="UserController">
+		<input type="text" ng-model='user.name'>
+		<input type="text" ng-model='user.age'>
 
-<hr>
-
-		<div ng-controller="UserController">
-			<input type="text" ng-model='user.name'>
-			<input type="text" ng-model='user.age'>
-
-			<p>{{user.name + ' | ' + user.age}}</p>
-			<button class="btn" ng-click="user.run()">subscribe</button>
-		</div>
-
-		<hr>
-
-		<div ng-controller="ShowController">
-			Total Movies: <input type="number" ng-model='limit'>
-			Title Filter: <input type="search" ng-model='query'>
-			<li ng-repeat="show in shows 
-			| limitTo:limit 
-			| filter:{title:query} 
-			| filter: {rate: 6}:comparator" 
-			ng-class="{title:show.book}">
-				<h3><input type="checkbox" ng-model="show.book"> {{ show.title }} 
-				<span class="badge">{{ show.rate }}</span>
-				<span class="glyphicon glyphicon-unchecked" ng-hide="show.book"></span>
-				<span class="glyphicon glyphicon-check" ng-show="show.book"></span></h3>
-				<span>{{'Update: ' + (show.updated * 1000 | date:'dd-MM-yyyy HH:mm:ss') }}</span> 
-				<p>{{'Description: ' + (show.des | limitTo:10) + '...' }}</p>	
-			</li>
-		</div>
-
-		<hr>
-
-
-
-
+		<p>{{user.name + ' | ' + user.age}}</p>
+		<button class="btn" ng-click="user.run()">subscribe</button>
 	</div>
+	<hr>
+
+	<div ng-controller="ShowController">
+		Total Movies: <input type="number" ng-model='limit'>
+		Title Filter: <input type="search" ng-model='query'>
+		<li ng-repeat="show in shows 
+		| limitTo:limit 
+		| filter:{title:query} 
+		| filter: {rate: 6}:comparator" 
+		ng-class="{title:show.book}">
+			<h3><input type="checkbox" ng-model="show.book"> {{ show.title }} 
+			<span class="badge">{{ show.rate }}</span>
+			<span class="glyphicon glyphicon-unchecked" ng-hide="show.book"></span>
+			<span class="glyphicon glyphicon-check" ng-show="show.book"></span></h3>
+			<span>{{'Update: ' + (show.updated * 1000 | date:'dd-MM-yyyy HH:mm:ss') }}</span> 
+			<p>{{'Description: ' + (show.des | limitTo:10) + '...' }}</p>	
+		</li>
+	</div>
+	<hr>
+
+	<form name="userForm">
+		<div ng-if="userForm.userEmail.$touched || userForm.$submitted">
+			<p class="alert alert-danger" 
+			 ng-if="userForm.userEmail.$error.required">Email shouldn't be empty</p>	
+		</div>
+		
+		<input type="email" name="userEmail" ng-model="user.email" required>
+	</form>			
+	<pre>{{ userForm | json }}</pre>
+	<hr>
+
+	<div ng-controller="GetUserController">
+		<p>{{ human.id + ' , ' + human.name + ' , ' + human.email }}</p>
+	</div>
+	<div ng-controller="SetUserController">
+		<button ng-click="update()">Update</button>	
+		<button ng-click="setBack()">Back</button>		
+	</div>
+	<hr>
+
+	<div ng-controller="LogController"></div>
+	
+	<div ng-controller="TimeController">
+		<button class="btn" ng-click="gameOn()">Game on</button>
+		<button class="btn" ng-click="gameOver()">Cancel</button>
+	</div>
+	<hr>
+
+	<div ng-controller="DeferController"></div>
+
+	<div ng-controller="MovieController">
+		<button ng-click="getShows()">Display Movie</button>
+		<ul>
+			<li ng-repeat="show in shows">  
+				{{ show.title }}
+			</li>
+		</ul>
+	</div>
+	<hr>
+
+	<div ng-controller="SelfController as user">
+		{{ user.name }}
+	</div>
+	<hr>
+
+	<div ng-controller="Safe">
+		{{ name }}
+	</div>
+
+</div>
 </body>
 </html>
