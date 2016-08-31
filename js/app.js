@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',[]);
+var myApp = angular.module('App',[]);
 
 myApp.controller('UserController',function($scope){
 	$scope.user = {
