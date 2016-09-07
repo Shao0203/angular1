@@ -1,0 +1,37 @@
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center">Book Store</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            Email:
+                        </label>
+                        <div class="col-md-10">
+                            <input type="email" class="form-control" placeholder="example@gmail.com" ng-model="userInfo.email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            Password:
+                        </label>
+                        <div class="col-md-10">
+                            <input type="password" class="form-control" placeholder="no less than 6 charactor" ng-model="userInfo.password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <a ui-sref="booklist({bookType:0})" class="btn btn-success btn-lg">Sign in</a>
+                            <button class="btn btn-default btn-lg" ng-click="setFormData()">Sign up</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

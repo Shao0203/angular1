@@ -1,0 +1,65 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="panel-title">Add books</div>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal" role="form" name="form">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            Name:
+                        </label>
+                        <div class="col-md-10">
+                            <input type="email" class="form-control" placeholder="Less than 64 charactors" ng-model="bookInfo.name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            Type:
+                        </label>
+                        <div class="col-md-10">
+                            <select class="form-control">
+                                <option>IT</option>
+                                <option>Business</option>
+                                <option>Finance</option>
+                                <option>Biology</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            Pub Date:
+                        </label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="dd-mm-yyyy" ng-model="bookInfo.pubDate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            Author:
+                        </label>
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="Less than 30 charactors" ng-model="bookInfo.author">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-2 control-label">
+                            e-book:
+                        </label>
+                        <div class="col-md-10">
+                            <input type="checkbox" ng-model="bookInfo.eBook">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <a ui-sref="booklist({bookType:0})" class="btn btn-success" ng-disabled="form.$valid">Save</a>
+                            <a ui-sref="booklist({bookType:0})" class="btn btn-primary">Cancel</a>
+                            <!-- <button class="btn btn-default" ng-click="setFormData()">Clean</button> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

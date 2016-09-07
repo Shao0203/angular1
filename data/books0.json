@@ -1,0 +1,36 @@
+[{
+    "bookId":"1",
+    "index": "1",
+    "name": "Pro AngularJS",
+    "author": "Adam Freeman",
+    "pubTime": "27-03-2014",
+    "price":"42"
+}, {
+    "bookId":"2",
+    "index": "2",
+    "name": "AngularJS by Example",
+    "author": "Chandermani",
+    "pubTime": "10-03-2015",
+    "price":"40"
+}, {
+    "bookId":"3",
+    "index": "3",
+    "name": "AngularJS Web Application Development",
+    "author": "Matt Frisbie",
+    "pubTime": "26-12-2014",
+    "price":"36"
+}, {
+    "bookId":"4",
+    "index": "4",
+    "name": "AngularJS: Up and Running",
+    "author": "Shyam Seshadri",
+    "pubTime": "08-09-2014",
+    "price":"30"
+}, {
+    "bookId":"5",
+    "index": "5",
+    "name": "Professional AngularJS",
+    "author": "Valeri Karpov",
+    "pubTime": "04-05-2015",
+    "price":"36"
+}]
