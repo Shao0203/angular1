@@ -1,7 +1,10 @@
 # angular1
-AngularJS practice
+AngularJS practice  
 
-Angular book store
-1. router
-2. Controllers
-3. templates
+Angular book store  
+1. Router  
+2. Controllers  
+3. Directives  
+4. Filters  
+5. Services  
+3. Templates  
