@@ -7,4 +7,4 @@ Angular book store
 3. Directives  
 4. Filters  
 5. Services  
-3. Templates  
+6. Templates  
